@@ -1,4 +1,4 @@
-# Responsive modal pop-up with php/mysql
+# Bootstrap modal pop with php form
 
 ### Front-End technologies
 - Bootstrap 3
