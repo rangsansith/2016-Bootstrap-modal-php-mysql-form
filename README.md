@@ -12,4 +12,6 @@
 - MySQL 5.0.11
 - phpMyAdmin 4.5.12
 
-![screenshot](http://www.hirokoymj.com/images/bootstrap-modal-php-form.png)
+### Screenshot
+http://www.hirokoymj.com/images/bootstrap-modal-php-form.png
+
