@@ -3,7 +3,7 @@
 ### Front-End technologies
 - [Bootstrap 3](http://getbootstrap.com/)
 - [Bootstrap Modal.js](http://getbootstrap.com/javascript/#modals)
-- jQuery 
+- [jQuery](https://jquery.com/) 
 - [jQuery plug-in Masked Input](http://digitalbush.com/projects/masked-input-plugin/)
 
 ### Back-End technologies
