@@ -110,42 +110,83 @@ if($_POST['go'] == 1){
 }
 /***********************************/
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>NBA Survey Form</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-</head>
-<body style="margin:0; padding:0">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NBA Sweepstakes Registration Form</title>
 
-<div id="NBAForm-container">
-	<div id="headline"><img src="images/form_headline.gif" width="600" height="149" border="0" alt="You're almost there!" /></div>
-	<div id="form-container">
+    <!-- Bootstrap -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/nba-modal.css" rel="stylesheet">
 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+<body>
+
+<form class="form-horizontal" name="NBASurveyForm" id="NBASurveyForm" action="form.php" method="post">
+<div class="container" id='NBAForm-container'>
+
+<div class="row">
+  <div class="col-xs-12" style="padding-left:0px !important">
+    <img src="images/form_headline.gif" border="0" alt="You're almost there!" class="img-responsive" />
+  </div>
+</div> 
+
+
+<!-- 1 -->
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+	<!-- Error message -->
     <div id="messageBox"></div>
+    <!-- name-->
+    <div class="form-group">
+      <label class="col-xs-3 control-label">Name</label>
+      <div class="col-xs-9" style="color:#fff">
+      <?=$billname?>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <form name="NBASurveyForm" id="NBASurveyForm" action="form.php" method="post">
-    <div class="label-container clearfix" id="customer-name">
-        <label for="billname">Name</label>
-        <div class="billing-name"><?=$billname?></div>
+<!-- 2 -->
+<div class="row">
+  <div class="col-xs-12 col-sm-8">
+    <!-- address-->
+    <div class="form-group">
+      <label class="col-xs-12 control-label" id="address-label">Address</label>
+      <div class="col-xs-12">
+        <input type="text" class="form-control" name="address" id="address" value="<?=$billadd1?>" />
+      </div>
     </div>
-    <div class="label-container" id="customer-address">
-        <label for="address">Address</label>
-        <input type="text" name="address" id="address" value="<?=$billadd1?>" />
-    </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <!-- city -->
+    <div class="form-group">
+      <label class="col-xs-12 control-label" id="city-label">city</label>
+      <div class="col-xs-12">
+        <input type="text" class="form-control" name="city" id="city" value="<?=$city?>" />
+      </div>
+    </div>    
+  </div>
+</div>
 
-    <div class="label-container clearfix" id="customer-city">
-        <label for="city">City</label>
-        <input type="text" name="city" id="city" value="<?=$city?>"   />
-    </div>
-    
-    <div class="label-container" id="customer-state">
-    <label for="state">State/Province</label>
-    <select name="state" id="state" >
-        <option value="">State</option>
+
+<!-- 3 -->
+<div class="row">
+  <div class="col-xs-12 col-sm-5">
+    <!-- state -->
+    <div class="form-group">
+      <label class="col-xs-12 control-label" id="state-label">State/Province</label>
+      <div class="col-xs-12">
+        <select name="state" id="state" class="form-control">
 <?php 
 	for($i=0; $i < count($array_state); $i++){
 		$flag = 0;
@@ -157,66 +198,96 @@ if($_POST['go'] == 1){
 <?php
 	}
 ?>	
-    </select>
+        </select>
+      </div>
     </div>
-    
-    <div class="label-container" id="customer-country">
-        <label for="country">Country</label>
-	    <select name="country" id="country" >
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    <!-- country -->
+    <div class="form-group">
+      <label class="col-xs-12 control-label">Country</label>
+      <div class="col-xs-12">
+        <select name="country" id="country" class="form-control">
             <option value="United States" <?=($country=='United States')? 'selected' : '' ?>>United States</option>
             <option value="Canada" <?=($country=='Canada')? 'selected' : '' ?>>Canada</option>
-		</select>
-    </div>    
-    
-    <div class="label-container clearfix" id="customer-zip">
-        <label for="zip">Zip/Postal Code</label>
-        <input type="text" name="zip" id="zip" value="<?=$zip?>" maxlength="6" />
+        </select>
+      </div>
     </div>
+  </div>
+  <div class="col-xs-12 col-sm-4">
+    <!-- zip -->
+    <div class="form-group">
+      <label class="col-xs-12 control-label" id="zip-label" >Zip/Postal Code</label>
+      <div class="col-xs-12">
+        <input type="text" class="form-control" name="zip" id="zip" value="<?=$zip?>" maxlength="6">
+      </div>
+    </div>
+  </div>
+</div>
 
-    <div class="label-container" id="customer-phone">
-        <label for="phone">Phone Number</label>
-        <input type="text" name="phone" id="phone" value=""  />
-    </div>
-    <div class="label-container clearfix" id="customer-birthday">
-        <label for="bday">Birthdate (mm/dd/yyyy)</label>
-		<!-- birth month -->
-	    <select name="bday_month" id="bday_month">
-        <option value="">Month</option>
+
+<!-- 4 -->
+<div class="row">
+  <div class="col-xs-12 col-sm-6">
+    <!-- phone -->
+    <div class="form-group">
+      <label class="col-xs-12 control-label">Phone Number</label>
+      <div class="col-xs-12">
+        <input type="text" class="form-control" name="phone" id="phone" value="" />
+      </div>
+    </div>    
+  </div>
+  <div class="col-xs-12 col-sm-6">
+     <!-- Birtyday-->
+    <div class="form-group">
+      <label class="col-xs-12 control-label">Birthday</label>
+      <div class="col-xs-4" style="padding-right:0 !important">
+        <select name="bday_month" id="bday_month" class="form-control">
 <?php 
 	for($i=0; $i < count($array_month); $i++){
 ?>
         <option value="<?=$array_month[$i]['id'] ?>" ><?=$array_month[$i]['month']?></option>
 <?php
 	}
-?>	
-		</select>
-		<!-- birth day -->
-	    <select name="bday_day" id="bday_day">
-        <option value="">Day</option>
+?>
+      </select>
+      </div>
+
+      <div class="col-xs-4" style="padding:0 2px !important">
+        <select name="bday_day" id="bday_day" class="form-control">
 <?php 
 	for($i=0; $i < count($array_day); $i++){
 ?>
         <option value="<?=$array_day[$i]['id'] ?>"><?=$array_day[$i]['day']?></option>
 <?php
 	}
-?>	
-		</select>
-		<!-- birth year -->
-	    <select name="bday_year" id="bday_year">
-        <option value="">Year</option>
+?>
+      </select>
+      </div>
+
+      <div class="col-xs-4" style="padding-left:0 !important">
+        <select name="bday_year" id="bday_year" class="form-control" >
 <?php 
 	for($i=0; $i < count($array_year); $i++){
 ?>
         <option value="<?=$array_year[$i]['year'] ?>"><?=$array_year[$i]['year']?></option>
 <?php
 	}
-?>	
-		</select>
-    </div>
+?>
+        </select>
+      </div>
+    </div>   
+  </div>
+</div>
 
-    <div class="label-container clearfix" id="customer-team">
-        <label for="team">NBA team preference</label>
-	    <select name="team_preference" id="team_preference">
+<!-- 5 -->
+<div class="row">
+  <div class="col-xs-12">
+    <!-- Team -->
+    <div class="form-group">
+      <label class="col-xs-12 control-label">NBA team preference</label>
+      <div class="col-xs-12">
+        <select name="team_preference" id="team_preference" class="form-control">
         <option value="">Please Select...</option>
 <?php 
 	for($i=0; $i < count($array_team); $i++){
@@ -224,29 +295,53 @@ if($_POST['go'] == 1){
         <option value="<?=$array_team[$i]['id'] ?>"><?=$array_team[$i]['team_name']?></option>
 <?php
 	}
-?>	
-    	</select>        
-    </div>
-	<div style="clear:both"></div>
+?>
+        </select>
 
-    <div class="label-container" id="customer_signup">
-        <div class="signup_container"><input type="checkbox" name="signup_weekly" id="signup_weekly" value="yes" />Sign me up for weekly headlines and highlights, exclusive offers, and special promotions from the NBA</span></div>
-        <div class="signup_container"><input type="checkbox" name="signup_offer" id="signup_offer" value="yes" checked />Sign me up for exclusive offers and discounts from Teleflora</div>
-        <div class="signup_container"><input type="checkbox" name="signup_optout" id="signup_optout"  value="yes" />I'd like to opt out of the Send &amp; Score Sweepstakes</div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="label-container" id="customer-submit-btn">
-    <input type="hidden" name="go" id="go"  value="1" />
+<!-- 6 -->
+<div class="row">
+  <div class="col-xs-12">
+    <!-- sing in checkbox -->
+    <div class="form-group">
+          <label class="col-xs-12 control-label">
+            <input type="checkbox" name="signup_weekly" id="signup_weekly" value="yes" /> Sign me up for weekly headlines and highlights, exclusive offers, and special promotions from the NBA<br />
+            <input type="checkbox" name="signup_offer" id="signup_offer" value="yes" checked /> Sign me up for exclusive offers and discounts from Teleflora<br />
+            <input type="checkbox" name="signup_optout" id="signup_optout" value="yes" /> I'd like to opt out of the Send &amp; Score Sweepstakes
+          </label>
+    </div>
+  </div>
+</div>
+
+<!-- 7 -->
+<div class="row">
+  <div class="col-xs-12">
+  <!-- Submit btn -->
+  <div class="form-group">
+    <div class="col-sm-12 control-label centered-text">
+    <input type="hidden" name="go" id="go" value="1" />
     <input type="hidden" name="orderID" id="orderID" value="<?=$orderID?>" />
     <input type="hidden" name="billname" id="billname" value="<?=$billname?>" />
     <input type="hidden" name="telefloraID" id="telefloraID" value="<?=$telefloraID?>" />
-    <input type="image" src="images/submit-btn.gif" width="165" height="46" border="0" />
+    <input type="image" src="images/submit-btn.gif" width="165" height="46" border="0" class="submit-btn" />
     </div>
-    </form>
-</div><!-- /form-container -->
-</div><!-- /NBAForm-container -->
+  </div>
 
-<script type="text/javascript">
+  </div>
+</div> 
+
+</div><!-- END: container -->
+</form><!-- END: form -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/jquery.maskedinput.min.js"></script>
+<script>
 jQuery(function($) {
       $('#phone').mask('(999) 999-9999');
 });
