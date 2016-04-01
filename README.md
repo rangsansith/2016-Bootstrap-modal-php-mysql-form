@@ -8,7 +8,7 @@
 
 ### Back-End technologies
 - Apache 2.0
-- PHP 5.5 ( [ Using `mysqli` API](http://php.net/manual/en/mysqlinfo.api.choosing.php) )
+- PHP 5.5 ( [ using `mysqli` API](http://php.net/manual/en/mysqlinfo.api.choosing.php) )
 - MySQL 5.0.11
 - phpMyAdmin 4.5.12
 
